@@ -1,0 +1,1 @@
+This is an alarm clock APK designed specifically for Android; I tested it on a Samsung device, so I’m not sure how it will perform on other phones. It functions as an alarm clock but includes a snooze/postpone feature for use during air raid alerts.
