@@ -1,0 +1,26 @@
+﻿<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Counterweight Tail -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4.0"
+        android:strokeLineCap="round"
+        android:pathData="M100,100 L100,118" />
+
+    <!-- Minute Hand Body (Pointing straight UP to 12) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.2"
+        android:strokeLineCap="round"
+        android:pathData="M100,100 L100,24" />
+
+    <!-- Center Accent Dot -->
+    <path
+        android:fillColor="#00B0FF"
+        android:pathData="M100,95.5 A4.5,4.5 0 1,1 99.99,95.5 Z" />
+
+</vector>

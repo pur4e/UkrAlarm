@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground">
+
+    <!-- iOS Navigation Bar -->
+    <RelativeLayout
+        android:id="@+id/layoutTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:text="@string/cancel"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="17sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingHorizontal="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/edit_alarm"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:text="@string/save"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingHorizontal="4dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutTopBar"
+        android:clipToPadding="false"
+        android:paddingBottom="48dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="12dp">
+
+            <!-- Minimalist Wheel Time Picker -->
+            <com.ukralarm.app.ui.WheelTimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="192dp"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Card 1: Repeat & Days -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        
+                        <TextView
+                            android:id="@+id/textDaysSummary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="12dp"
+                            android:text="@string/choose_days"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="?android:attr/textColorPrimary" />
+                            
+                        <ImageView
+                            android:id="@+id/btnCalendar"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:padding="7dp"
+                            android:background="@drawable/bg_day_toggle"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="?android:attr/textColorPrimary" />
+                    </LinearLayout>
+
+                    <!-- Days Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="7">
+
+                        <CheckBox android:id="@+id/btnMon" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_mon_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnTue" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_tue_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnWed" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_wed_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnThu" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_thu_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnFri" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_fri_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnSat" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="@color/text_day_toggle" android:text="@string/day_sat_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                        <CheckBox android:id="@+id/btnSun" android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1" android:button="@null" android:background="@drawable/bg_day_toggle" android:textColor="#FF3B30" android:text="@string/day_sun_short" android:gravity="center" android:textSize="15sp" android:layout_marginHorizontal="2dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2: Grouped Options (Label, Sound, Vibration, Snooze) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="8dp">
+
+                    <!-- Label Input Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/alarm_label"
+                            android:textSize="16sp"
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <EditText
+                            android:id="@+id/editLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:gravity="end"
+                            android:hint="@string/alarm_label"
+                            android:textColorHint="?android:attr/textColorSecondary"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="16sp"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorOutline" />
+
+                    <!-- Sound Row -->
+                    <LinearLayout
+                        android:id="@+id/btnRingtone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp"
+                        android:background="?attr/selectableItemBackground">
+                        
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sound" android:textSize="16sp" android:textColor="?android:attr/textColorPrimary" />
+                            <TextView android:id="@+id/textRingtoneName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sound_default" android:textSize="13sp" android:textColor="?attr/colorPrimary" android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                        
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchSound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorOutline" />
+
+                    <!-- Vibration Row -->
+                    <LinearLayout
+                        android:id="@+id/btnVibrationRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp"
+                        android:background="?attr/selectableItemBackground">
+                        
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vibration" android:textSize="16sp" android:textColor="?android:attr/textColorPrimary" />
+                            <TextView android:id="@+id/textVibrationName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vib_basic" android:textSize="13sp" android:textColor="?attr/colorPrimary" android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                        
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchVibration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorOutline" />
+
+                    <!-- Snooze Row -->
+                    <LinearLayout
+                        android:id="@+id/btnSnoozeRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp"
+                        android:background="?attr/selectableItemBackground">
+                        
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/snooze" android:textSize="16sp" android:textColor="?android:attr/textColorPrimary" />
+                            <TextView android:id="@+id/textSnoozeName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5 хв, 3 рази" android:textSize="13sp" android:textColor="?attr/colorPrimary" android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                        
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchSnooze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3: Delete Alarm (iOS Style Centered Red Button) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:text="@string/delete_alarm"
+                    android:textColor="@color/ios_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:background="?attr/selectableItemBackground" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

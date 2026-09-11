@@ -1,0 +1,28 @@
+﻿<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Counterweight Tail -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6.0"
+        android:strokeLineCap="round"
+        android:pathData="M100,100 L100,114" />
+
+    <!-- Hour Hand Body (Pointing straight UP to 12) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7.5"
+        android:strokeLineCap="round"
+        android:pathData="M100,100 L100,48" />
+
+    <!-- Center Pivot Base -->
+    <path
+        android:fillColor="#1B1B22"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.0"
+        android:pathData="M100,93.5 A6.5,6.5 0 1,1 99.99,93.5 Z" />
+
+</vector>

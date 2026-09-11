@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_glass_bottom_sheet"
+    android:paddingTop="12dp"
+    android:paddingBottom="36dp"
+    android:paddingHorizontal="20dp">
+
+    <!-- Top Drag Handle -->
+    <View
+        android:layout_width="38dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_drag_handle"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Title & Close -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/snooze"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/btnSnoozeClose"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_day_toggle"
+            android:padding="6dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="?android:attr/textColorPrimary" />
+
+    </RelativeLayout>
+
+    <!-- Section 1: Interval -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snooze_interval_title"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Flow or horizontal scroll for intervals -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_marginBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pillInterval5"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_pill_button"
+                android:textColor="@color/text_pill_button"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="5 хв"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/pillInterval10"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_pill_button"
+                android:textColor="@color/text_pill_button"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="10 хв"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/pillInterval15"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_pill_button"
+                android:textColor="@color/text_pill_button"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="15 хв"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/pillInterval30"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_pill_button"
+                android:textColor="@color/text_pill_button"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="30 хв"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/pillIntervalCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_pill_button"
+                android:textColor="@color/text_pill_button"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="@string/snooze_custom"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Custom minutes input container -->
+    <LinearLayout
+        android:id="@+id/layoutCustomMinutesSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/editCustomMinutesSheet"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_glass_dock"
+            android:paddingHorizontal="16dp"
+            android:inputType="number"
+            android:maxLength="3"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textColorHint="?android:attr/textColorSecondary"
+            android:hint="@string/custom_minutes_hint"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <!-- Section 2: Repeats -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snooze_repeat_title"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="28dp">
+
+        <TextView
+            android:id="@+id/pillRepeat3"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pill_button"
+            android:textColor="@color/text_pill_button"
+            android:gravity="center"
+            android:text="@string/repeat_3"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/pillRepeat5"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pill_button"
+            android:textColor="@color/text_pill_button"
+            android:gravity="center"
+            android:text="@string/repeat_5"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/pillRepeatInf"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pill_button"
+            android:textColor="@color/text_pill_button"
+            android:gravity="center"
+            android:text="@string/repeat_inf"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- Save Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveSnoozeSheet"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="@string/save"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="?attr/colorPrimary"
+        app:cornerRadius="24dp"
+        style="@style/Widget.Material3.Button" />
+
+</LinearLayout>

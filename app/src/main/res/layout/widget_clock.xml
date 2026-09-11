@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_widget_glass"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- Live Native Analog Clock -->
+    <AnalogClock
+        android:id="@+id/widgetAnalogClock"
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:layout_gravity="center"
+        android:dial="@drawable/widget_dial"
+        android:hand_hour="@drawable/widget_hand_hour"
+        android:hand_minute="@drawable/widget_hand_minute" />
+
+    <!-- Info Pill Row -->
+    <LinearLayout
+        android:id="@+id/widgetInfoPill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_widget_pill"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp">
+
+        <TextView
+            android:id="@+id/textWidgetAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏰ --:--"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="6dp"
+            android:text="•"
+            android:textColor="#80FFFFFF"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textWidgetAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🟢 Відбій"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

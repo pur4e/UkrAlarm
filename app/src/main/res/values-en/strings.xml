@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Alarm</string>
+    <string name="add_alarm">Add alarm</string>
+    <string name="no_alarms">No alarms\nTap + to add</string>
+    <string name="select_time">Select time</string>
+    <string name="alarm_label">Alarm label</string>
+    <string name="repeat_days">Repeat</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="snooze">Snooze</string>
+    <string name="sound">Sound</string>
+    <string name="vibration">Vibration</string>
+    <string name="choose_days">Choose days</string>
+    
+    <string name="snooze_5">5 minutes</string>
+    <string name="snooze_10">10 minutes</string>
+    <string name="snooze_15">15 minutes</string>
+    <string name="snooze_30">30 minutes</string>
+    
+    <string name="repeat_3">3 times</string>
+    <string name="repeat_5">5 times</string>
+    <string name="repeat_inf">Continuous</string>
+    
+    <string name="vib_basic">Basic call</string>
+    <string name="vib_heartbeat">Heartbeat</string>
+    <string name="vib_ticktock">Tick-tock</string>
+
+    <string name="sound_default">Alarm clock</string>
+    <string name="custom_sound">Selected sound</string>
+
+    <string name="settings">Settings</string>
+    <string name="select_region">Your region</string>
+    <string name="select_district">Your district</string>
+    <string name="check_alert">Check status</string>
+    <string name="no_region">Region not selected</string>
+    <string name="no_district">District not selected</string>
+    <string name="alert_active">🚨 Air raid alert</string>
+    <string name="alert_inactive">✅ All clear</string>
+    <string name="alert_check_error">Network error</string>
+    <string name="postponed_by_alert">Postponed due to air raid alert</string>
+    
+    <string name="alarm_set_days">Alarm set for %1$d d %2$d h %3$d min</string>
+    <string name="alarm_set_hours">Alarm set for %1$d h %2$d min</string>
+    <string name="alarm_set_minutes">Alarm set for %1$d min</string>
+    <string name="alarm_set_now">Alarm set for less than a minute from now</string>
+    
+    <string name="api_warning">Created by Volodymyr Pure</string>
+    <string name="edit_alarm">Edit Alarm</string>
+    <string name="new_alarm">New Alarm</string>
+    <string name="select_region_hint">Select region</string>
+    <string name="select_district_hint">Select district</string>
+    
+    <string name="theme_title">Theme</string>
+    <string name="theme_black">Black</string>
+    <string name="theme_white">White</string>
+    
+    <string name="lang_title">Language</string>
+    <string name="lang_ua">Українська</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    
+    <string name="postpone_title">Postpone on alert</string>
+    <string name="ring_notification_title">Alarm is ringing</string>
+    <string name="just_once">Just once</string>
+    <string name="every_day">Every day</string>
+    <string name="weekdays">Weekdays</string>
+    <string name="weekends">Weekends</string>
+<string name="day_mon_short">M</string><string name="day_tue_short">T</string><string name="day_wed_short">W</string><string name="day_thu_short">T</string><string name="day_fri_short">F</string><string name="day_sat_short">S</string><string name="day_sun_short">S</string><string name="day_monday">Monday</string><string name="day_tuesday">Tuesday</string><string name="day_wednesday">Wednesday</string><string name="day_thursday">Thursday</string><string name="day_friday">Friday</string><string name="day_saturday">Saturday</string><string name="day_sunday">Sunday</string><string name="snooze_interval_title">Snooze interval</string><string name="snooze_repeat_title">Number of repeats</string><string name="minutes_short">min</string><string name="snooze_format">%1$d min, %2$s</string>    <string name="select_all">Select all</string>
+    <string name="deselect_all">Deselect all</string>
+    <string name="enable_all">Enable all</string>
+    <string name="disable_all">Disable all</string>
+    <string name="delete_all">Delete all</string>
+    <string name="selected_count">Selected: %1$d</string>
+    <string name="snooze_custom">Custom</string>
+    <string name="enter_minutes">Enter minutes:</string>
+    <string name="custom_minutes_hint">Minutes (1-180)</string>
+    <string name="edit">Edit</string>
+    <string name="done">Done</string>
+    <string name="delete_alarm">Delete Alarm</string>
+    <string name="search">Search...</string>
+    <string name="select_date">Select date</string>
+    <string name="clear_date">Reset</string>
+    <string name="widget_clock_name">Clock &amp; Status</string>
+    <string name="widget_clock_description">Glass analog clock with next alarm and air alert status</string>
+</resources>

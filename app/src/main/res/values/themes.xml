@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Shape -->
+    <style name="ShapeAppearance.UkrAlarm.Card" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="ShapeAppearance.UkrAlarm.Pill" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">28dp</item>
+    </style>
+
+    <!-- iOS 26 Glassmorphic Black Theme -->
+    <style name="Theme.UkrAlarm.Black" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/ios_blue_dark</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FFFFFF</item>
+        <item name="android:statusBarColor">@color/black_bg</item>
+        <item name="android:navigationBarColor">@color/black_bg</item>
+        <item name="android:windowBackground">@color/black_bg</item>
+        <item name="colorSurface">@color/black_card</item>
+        <item name="colorOnSurface">@color/black_text_primary</item>
+        <item name="colorOnBackground">@color/black_text_primary</item>
+        <item name="android:textColorPrimary">@color/black_text_primary</item>
+        <item name="android:textColorSecondary">@color/black_text_secondary</item>
+        <item name="colorOutline">@color/black_card_border</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.UkrAlarm.Card</item>
+    </style>
+
+    <!-- iOS 26 Clean White Theme -->
+    <style name="Theme.UkrAlarm.White" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/ios_blue</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#000000</item>
+        <item name="android:statusBarColor">@color/white_bg</item>
+        <item name="android:navigationBarColor">@color/white_bg</item>
+        <item name="android:windowBackground">@color/white_bg</item>
+        <item name="colorSurface">@color/white_card</item>
+        <item name="colorOnSurface">@color/white_text_primary</item>
+        <item name="colorOnBackground">@color/white_text_primary</item>
+        <item name="android:textColorPrimary">@color/white_text_primary</item>
+        <item name="android:textColorSecondary">@color/white_text_secondary</item>
+        <item name="colorOutline">@color/white_card_border</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.UkrAlarm.Card</item>
+    </style>
+
+    <style name="Theme.UkrAlarm" parent="Theme.UkrAlarm.Black" />
+</resources>

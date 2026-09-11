@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- iOS 26 Dark Theme (OLED Glassmorphism) -->
+    <color name="black_bg">#000000</color>
+    <color name="black_card">#161618</color>
+    <color name="black_card_border">#26FFFFFF</color>
+    <color name="black_card_selected">#222634</color>
+    <color name="black_card_selected_border">#0A84FF</color>
+    <color name="black_glass_dock">#E61C1C1E</color>
+    <color name="black_primary">#FFFFFF</color>
+    <color name="black_primary_dark">#000000</color>
+    <color name="black_accent">#0A84FF</color>
+    <color name="black_text_primary">#FFFFFF</color>
+    <color name="black_text_secondary">#8E8E93</color>
+    <color name="black_divider">#1FFFFFFF</color>
+
+    <!-- iOS 26 Light Theme (Frosted Clean White) -->
+    <color name="white_bg">#F2F2F7</color>
+    <color name="white_card">#FFFFFF</color>
+    <color name="white_card_border">#14000000</color>
+    <color name="white_card_selected">#F0F6FF</color>
+    <color name="white_card_selected_border">#007AFF</color>
+    <color name="white_glass_dock">#E6FFFFFF</color>
+    <color name="white_primary">#000000</color>
+    <color name="white_primary_dark">#E5E5EA</color>
+    <color name="white_accent">#007AFF</color>
+    <color name="white_text_primary">#000000</color>
+    <color name="white_text_secondary">#8E8E93</color>
+    <color name="white_divider">#14000000</color>
+
+    <!-- Apple System Colors -->
+    <color name="ios_blue">#007AFF</color>
+    <color name="ios_blue_dark">#0A84FF</color>
+    <color name="ios_green">#34C759</color>
+    <color name="ios_red">#FF3B30</color>
+    <color name="ios_orange">#FF9500</color>
+    
+    <!-- Status Colors -->
+    <color name="alert_active">#FF3B30</color>
+    <color name="alert_inactive">#34C759</color>
+    <color name="divider">#1FFFFFFF</color>
+
+    <!-- Aliases for compatibility -->
+    <color name="primary">@color/black_primary</color>
+    <color name="primary_dark">@color/black_primary_dark</color>
+    <color name="accent">@color/black_accent</color>
+    <color name="background">@color/black_bg</color>
+    <color name="card_background">@color/black_card</color>
+    <color name="text_primary">@color/black_text_primary</color>
+    <color name="text_secondary">@color/black_text_secondary</color>
+</resources>

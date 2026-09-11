@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_glass_bottom_sheet"
+    android:paddingTop="12dp"
+    android:paddingBottom="36dp"
+    android:paddingHorizontal="20dp">
+
+    <!-- Top Drag Handle -->
+    <View
+        android:layout_width="38dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_drag_handle"
+        android:layout_marginBottom="14dp" />
+
+    <!-- Top Bar: Title & Close Button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/select_date"
+            android:id="@+id/textCalendarHeaderTitle"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/btnCalendarClose"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_day_toggle"
+            android:padding="6dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="?android:attr/textColorPrimary" />
+
+    </RelativeLayout>
+
+    <!-- Month Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:id="@+id/textMonthYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/btnPrevMonth"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_day_toggle"
+            android:src="@drawable/ic_chevron_left"
+            android:padding="8dp"
+            android:layout_marginEnd="8dp"
+            app:tint="?android:attr/textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/btnNextMonth"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_day_toggle"
+            android:src="@drawable/ic_chevron_right"
+            android:padding="8dp"
+            app:tint="?android:attr/textColorPrimary" />
+
+    </LinearLayout>
+
+    <!-- Weekday Labels (Mon to Sun) -->
+    <LinearLayout
+        android:id="@+id/layoutWeekdays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        android:layout_marginBottom="8dp">
+
+        <TextView android:id="@+id/textDayMon" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_mon_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDayTue" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_tue_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDayWed" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_wed_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDayThu" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_thu_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDayFri" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_fri_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDaySat" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_sat_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="?android:attr/textColorSecondary" />
+        <TextView android:id="@+id/textDaySun" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/day_sun_short" android:textSize="13sp" android:fontFamily="sans-serif-medium" android:textColor="#FF453A" />
+
+    </LinearLayout>
+
+    <!-- Days Grid RecyclerView (7 columns) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCalendarDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearDate"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/clear_date"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="?android:attr/textColorPrimary"
+            android:backgroundTint="#188E8E93"
+            app:strokeWidth="1dp"
+            app:strokeColor="#258E8E93"
+            app:cornerRadius="25dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="0dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.Material3.Button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmDate"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/save"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="?attr/colorPrimary"
+            app:strokeWidth="0dp"
+            app:cornerRadius="25dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="0dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:layout_marginStart="8dp"
+            style="@style/Widget.Material3.Button" />
+
+    </LinearLayout>
+
+</LinearLayout>

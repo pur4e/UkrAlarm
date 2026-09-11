@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="192dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:clipChildren="true"
+    android:clipToPadding="true">
+
+    <!-- Hours Wheel -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHours"
+        android:layout_width="92dp"
+        android:layout_height="192dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:clipToPadding="false" />
+
+    <!-- Center Colon Divider -->
+    <TextView
+        android:id="@+id/textColon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text=":"
+        android:textSize="48sp"
+        android:fontFamily="sans-serif-bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:includeFontPadding="false" />
+
+    <!-- Minutes Wheel -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMinutes"
+        android:layout_width="92dp"
+        android:layout_height="192dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:clipToPadding="false" />
+
+</LinearLayout>

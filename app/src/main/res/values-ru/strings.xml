@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Будильник</string>
+    <string name="add_alarm">Добавить будильник</string>
+    <string name="no_alarms">Нет будильников\nНажмите + чтобы добавить</string>
+    <string name="select_time">Выберите время</string>
+    <string name="alarm_label">Название будильника</string>
+    <string name="repeat_days">Повтор</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отменить</string>
+    <string name="delete">Удалить</string>
+    <string name="dismiss">Выключить</string>
+    <string name="snooze">Пауза</string>
+    <string name="sound">Звук</string>
+    <string name="vibration">Вибрация</string>
+    <string name="choose_days">Выберите дни</string>
+    
+    <string name="snooze_5">5 минут</string>
+    <string name="snooze_10">10 минут</string>
+    <string name="snooze_15">15 минут</string>
+    <string name="snooze_30">30 минут</string>
+    
+    <string name="repeat_3">3 раза</string>
+    <string name="repeat_5">5 раз</string>
+    <string name="repeat_inf">Непрерывно</string>
+    
+    <string name="vib_basic">Базовая</string>
+    <string name="vib_heartbeat">Сердцебиение</string>
+    <string name="vib_ticktock">Тик-так</string>
+
+    <string name="sound_default">Тревожный будильник</string>
+    <string name="custom_sound">Выбранный звук</string>
+
+    <string name="settings">Настройки</string>
+    <string name="select_region">Ваш регион</string>
+    <string name="select_district">Ваш район</string>
+    <string name="check_alert">Проверить статус</string>
+    <string name="no_region">Регион не выбран</string>
+    <string name="no_district">Район не выбран</string>
+    <string name="alert_active">🚨 Тревога активна</string>
+    <string name="alert_inactive">✅ Отбой / Нет тревоги</string>
+    <string name="alert_check_error">Ошибка сети</string>
+    <string name="postponed_by_alert">Отложено из-за воздушной тревоги</string>
+    
+    <string name="alarm_set_days">Будильник прозвенит через %1$d дн. %2$d ч. %3$d мин.</string>
+    <string name="alarm_set_hours">Будильник прозвенит через %1$d ч. %2$d мин.</string>
+    <string name="alarm_set_minutes">Будильник прозвенит через %1$d мин.</string>
+    <string name="alarm_set_now">Будильник прозвенит меньше чем через минуту</string>
+    
+    <string name="api_warning">Создано Володимиром Pure</string>
+    <string name="edit_alarm">Редактирование</string>
+    <string name="new_alarm">Новый будильник</string>
+    <string name="select_region_hint">Выберите регион</string>
+    <string name="select_district_hint">Выберите район</string>
+    
+    <string name="theme_title">Оформление</string>
+    <string name="theme_black">Черная</string>
+    <string name="theme_white">Белая</string>
+    
+    <string name="lang_title">Язык</string>
+    <string name="lang_ua">Українська</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    
+    <string name="postpone_title">Откладывать при тревоге</string>
+    <string name="ring_notification_title">Будильник звонит</string>
+    <string name="just_once">Один раз</string>
+    <string name="every_day">Каждый день</string>
+    <string name="weekdays">Будни</string>
+    <string name="weekends">Выходные</string>
+<string name="day_mon_short">П</string><string name="day_tue_short">В</string><string name="day_wed_short">С</string><string name="day_thu_short">Ч</string><string name="day_fri_short">П</string><string name="day_sat_short">С</string><string name="day_sun_short">В</string><string name="day_monday">Понедельник</string><string name="day_tuesday">Вторник</string><string name="day_wednesday">Среда</string><string name="day_thursday">Четверг</string><string name="day_friday">Пятница</string><string name="day_saturday">Суббота</string><string name="day_sunday">Воскресенье</string><string name="snooze_interval_title">Интервал паузы</string><string name="snooze_repeat_title">Количество повторов</string><string name="minutes_short">мин</string><string name="snooze_format">%1$d мин, %2$s</string>    <string name="select_all">Выбрать все</string>
+    <string name="deselect_all">Снять все</string>
+    <string name="enable_all">Включить все</string>
+    <string name="disable_all">Выключить все</string>
+    <string name="delete_all">Удалить все</string>
+    <string name="selected_count">Выбрано: %1$d</string>
+    <string name="snooze_custom">Настраиваемый</string>
+    <string name="enter_minutes">Укажите минуты:</string>
+    <string name="custom_minutes_hint">Минуты (1-180)</string>
+    <string name="edit">Править</string>
+    <string name="done">Готово</string>
+    <string name="delete_alarm">Удалить будильник</string>
+    <string name="search">Поиск...</string>
+    <string name="select_date">Выберите дату</string>
+    <string name="clear_date">Сбросить</string>
+    <string name="widget_clock_name">Часы и статус</string>
+    <string name="widget_clock_description">Стеклянные аналоговые часы с отображением будильника и статуса тревоги</string>
+</resources>
