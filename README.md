@@ -1,6 +1,7 @@
 # ⏰ Pure Clock (UkrAlarm)
 
-> **Розумний будильник для Android із захистом під час повітряних тривог в Україні та преміальним скляним інтерфейсом (Glassmorphism).**
+> **Розумний будильник для Android із захистом під час повітряних тривог в Україні та преміальним скляним інтерфейсом (Glassmorphism).**  
+> *This is an alarm clock APK designed specifically for Android (tested on Samsung). It functions as an alarm clock with a smart snooze/postpone feature during air raid alerts.*
 
 ---
 
@@ -49,7 +50,7 @@
 
 1. Клонуйте репозиторій:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/UkrAlarm.git
+   git clone https://github.com/pur4e/UkrAlarm.git
    cd UkrAlarm
    ```
 2. Відкрийте в **Android Studio** або зберіть APK через консоль:
@@ -62,4 +63,4 @@
 ---
 
 ## 👨‍💻 Автор
-Створено **Володимиром Pure**
+Створено **Володимиром Pure** (`pur4e`)
