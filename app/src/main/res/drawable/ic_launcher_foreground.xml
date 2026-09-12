@@ -4,63 +4,58 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Minimalist Dial Ring (Compact & Centered) -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:pathData="M 54,34 A 20,20 0 1,1 53.99,34 Z" />
+    <!-- 3D Faceted Bezel Ring (Centered, 50% scale) -->
+    <path android:fillColor="#D8DCE2" android:pathData="M54.00,36.00 L58.66,36.61 L58.04,38.93 L54.00,38.40 Z" />
+    <path android:fillColor="#C3CAD2" android:pathData="M58.66,36.61 L63.00,38.41 L61.80,40.49 L58.04,38.93 Z" />
+    <path android:fillColor="#ADB6C2" android:pathData="M63.00,38.41 L66.73,41.27 L65.03,42.97 L61.80,40.49 Z" />
+    <path android:fillColor="#98A3B2" android:pathData="M66.73,41.27 L69.59,45.00 L67.51,46.20 L65.03,42.97 Z" />
+    <path android:fillColor="#8592A4" android:pathData="M69.59,45.00 L71.39,49.34 L69.07,49.96 L67.51,46.20 Z" />
+    <path android:fillColor="#768498" android:pathData="M71.39,49.34 L72.00,54.00 L69.60,54.00 L69.07,49.96 Z" />
+    <path android:fillColor="#6C7B91" android:pathData="M72.00,54.00 L71.39,58.66 L69.07,58.04 L69.60,54.00 Z" />
+    <path android:fillColor="#66758C" android:pathData="M71.39,58.66 L69.59,63.00 L67.51,61.80 L69.07,58.04 Z" />
+    <path android:fillColor="#64748B" android:pathData="M69.59,63.00 L66.73,66.73 L65.03,65.03 L67.51,61.80 Z" />
+    <path android:fillColor="#64748B" android:pathData="M66.73,66.73 L63.00,69.59 L61.80,67.51 L65.03,65.03 Z" />
+    <path android:fillColor="#66758C" android:pathData="M63.00,69.59 L58.66,71.39 L58.04,69.07 L61.80,67.51 Z" />
+    <path android:fillColor="#6C7B91" android:pathData="M58.66,71.39 L54.00,72.00 L54.00,69.60 L58.04,69.07 Z" />
+    <path android:fillColor="#768498" android:pathData="M54.00,72.00 L49.34,71.39 L49.96,69.07 L54.00,69.60 Z" />
+    <path android:fillColor="#8592A4" android:pathData="M49.34,71.39 L45.00,69.59 L46.20,67.51 L49.96,69.07 Z" />
+    <path android:fillColor="#98A3B2" android:pathData="M45.00,69.59 L41.27,66.73 L42.97,65.03 L46.20,67.51 Z" />
+    <path android:fillColor="#ADB6C2" android:pathData="M41.27,66.73 L38.41,63.00 L40.49,61.80 L42.97,65.03 Z" />
+    <path android:fillColor="#C3CAD2" android:pathData="M38.41,63.00 L36.61,58.66 L38.93,58.04 L40.49,61.80 Z" />
+    <path android:fillColor="#D8DCE2" android:pathData="M36.61,58.66 L36.00,54.00 L38.40,54.00 L38.93,58.04 Z" />
+    <path android:fillColor="#EAECEF" android:pathData="M36.00,54.00 L36.61,49.34 L38.93,49.96 L38.40,54.00 Z" />
+    <path android:fillColor="#F7F8F9" android:pathData="M36.61,49.34 L38.41,45.00 L40.49,46.20 L38.93,49.96 Z" />
+    <path android:fillColor="#FEFEFE" android:pathData="M38.41,45.00 L41.27,41.27 L42.97,42.97 L40.49,46.20 Z" />
+    <path android:fillColor="#FEFEFE" android:pathData="M41.27,41.27 L45.00,38.41 L46.20,40.49 L42.97,42.97 Z" />
+    <path android:fillColor="#F7F8F9" android:pathData="M45.00,38.41 L49.34,36.61 L49.96,38.93 L46.20,40.49 Z" />
+    <path android:fillColor="#EAECEF" android:pathData="M49.34,36.61 L54.00,36.00 L54.00,38.40 L49.96,38.93 Z" />
 
-    <!-- 12, 3, 6, 9 Cardinal Ticks -->
-    <!-- 12 o'clock -->
+    <!-- Inner Bevel Accent Ring -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:strokeLineCap="round"
-        android:pathData="M 54,36 L 54,38.5" />
+        android:strokeColor="#252F3E"
+        android:strokeWidth="0.5"
+        android:pathData="M54.00,38.40 A15.60,15.60 0 1,1 53.99,38.40 Z" />
 
-    <!-- 3 o'clock -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:strokeLineCap="round"
-        android:pathData="M 69.5,54 L 72,54" />
+    <!-- 3D Faceted Cardinal Hour Markers (12, 3, 6, 9) -->
+    <path android:fillColor="#FFFFFF" android:pathData="M54.00,41.30 L54.00,38.50 L53.20,39.90 Z" />
+    <path android:fillColor="#64748B" android:pathData="M54.00,41.30 L54.00,38.50 L54.80,39.90 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M66.70,54.00 L69.50,54.00 L68.10,53.20 Z" />
+    <path android:fillColor="#64748B" android:pathData="M66.70,54.00 L69.50,54.00 L68.10,54.80 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M54.00,66.70 L54.00,69.50 L54.80,68.10 Z" />
+    <path android:fillColor="#64748B" android:pathData="M54.00,66.70 L54.00,69.50 L53.20,68.10 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M41.30,54.00 L38.50,54.00 L39.90,54.80 Z" />
+    <path android:fillColor="#64748B" android:pathData="M41.30,54.00 L38.50,54.00 L39.90,53.20 Z" />
 
-    <!-- 6 o'clock -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:strokeLineCap="round"
-        android:pathData="M 54,69.5 L 54,72" />
+    <!-- 3D Dauphine Hour Hand (~10:10) -->
+    <path android:fillColor="#FFFFFF" android:pathData="M54.98,54.69 L52.91,55.56 L45.40,47.98 L54.00,54.00 Z" />
+    <path android:fillColor="#64748B" android:pathData="M54.98,54.69 L54.00,54.00 L45.40,47.98 L55.09,52.44 Z" />
 
-    <!-- 9 o'clock -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:strokeLineCap="round"
-        android:pathData="M 36,54 L 38.5,54" />
+    <!-- 3D Dauphine Minute Hand (~10:10) -->
+    <path android:fillColor="#FFFFFF" android:pathData="M52.98,54.64 L53.21,52.73 L66.30,46.32 L54.00,54.00 Z" />
+    <path android:fillColor="#64748B" android:pathData="M52.98,54.64 L54.00,54.00 L66.30,46.32 L54.79,55.27 Z" />
 
-    <!-- Hour Hand (Rounded Pill, ~10:10) -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.8"
-        android:strokeLineCap="round"
-        android:pathData="M 54,54 L 45.4,48.0" />
-
-    <!-- Minute Hand (Rounded Pill, ~10:10) -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.2"
-        android:strokeLineCap="round"
-        android:pathData="M 54,54 L 66.3,46.3" />
-
-    <!-- Center Pivot Ring (White) -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M 54,51.6 A 2.4,2.4 0 1,1 53.99,51.6 Z" />
-
-    <!-- Center Pivot Core (Pure Black Depth) -->
-    <path
-        android:fillColor="#000000"
-        android:pathData="M 54,53.1 A 0.9,0.9 0 1,1 53.99,53.1 Z" />
-
+    <!-- Center 3D Pivot Cap -->
+    <path android:fillColor="#FFFFFF" android:pathData="M54.00,51.80 A2.20,2.20 0 0,0 54.00,56.20 Z" />
+    <path android:fillColor="#64748B" android:pathData="M54.00,51.80 A2.20,2.20 0 0,1 54.00,56.20 Z" />
+    <path android:fillColor="#000000" android:pathData="M54.00,53.20 A0.80,0.80 0 1,1 53.99,53.20 Z" />
 </vector>
