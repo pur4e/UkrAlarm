@@ -4,25 +4,20 @@
     android:viewportWidth="200"
     android:viewportHeight="200">
 
-    <!-- Counterweight Tail -->
+    <!-- Hour Hand Faceted 3D Dauphine Hand (Pointing to 12) -->
+    <!-- Lit Side (Pure White) -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="6.0"
-        android:strokeLineCap="round"
-        android:pathData="M100,100 L100,114" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,105 L95,100 L100,44 L100,100 Z" />
 
-    <!-- Hour Hand Body (Pointing straight UP to 12) -->
+    <!-- Shaded Side (Slate Silver #7D8A9E) -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="7.5"
-        android:strokeLineCap="round"
-        android:pathData="M100,100 L100,48" />
+        android:fillColor="#7D8A9E"
+        android:pathData="M100,105 L100,100 L100,44 L105,100 Z" />
 
-    <!-- Center Pivot Base -->
+    <!-- Center Pivot Core -->
     <path
-        android:fillColor="#1B1B22"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.0"
-        android:pathData="M100,93.5 A6.5,6.5 0 1,1 99.99,93.5 Z" />
+        android:fillColor="#000000"
+        android:pathData="M100,95.5 A4.5,4.5 0 1,1 99.99,95.5 Z" />
 
 </vector>

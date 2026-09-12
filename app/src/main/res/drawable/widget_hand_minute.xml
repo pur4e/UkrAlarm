@@ -4,23 +4,20 @@
     android:viewportWidth="200"
     android:viewportHeight="200">
 
-    <!-- Counterweight Tail -->
+    <!-- Minute Hand Faceted 3D Dauphine Hand (Pointing to 12) -->
+    <!-- Lit Side (Pure White) -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.0"
-        android:strokeLineCap="round"
-        android:pathData="M100,100 L100,118" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,106 L96,100 L100,20 L100,100 Z" />
 
-    <!-- Minute Hand Body (Pointing straight UP to 12) -->
+    <!-- Shaded Side (Slate Silver #7D8A9E) -->
     <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="5.2"
-        android:strokeLineCap="round"
-        android:pathData="M100,100 L100,24" />
+        android:fillColor="#7D8A9E"
+        android:pathData="M100,106 L100,100 L100,20 L104,100 Z" />
 
-    <!-- Center Accent Dot -->
+    <!-- Center Pivot Accent Dot (White) -->
     <path
-        android:fillColor="#00B0FF"
-        android:pathData="M100,95.5 A4.5,4.5 0 1,1 99.99,95.5 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,98 A2.0,2.0 0 1,1 99.99,98 Z" />
 
 </vector>

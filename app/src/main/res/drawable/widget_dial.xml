@@ -4,94 +4,86 @@
     android:viewportWidth="200"
     android:viewportHeight="200">
 
-    <!-- Dial Background Base -->
+    <!-- Dial Outer Minimalist Ring -->
     <path
-        android:fillColor="#1B1B22"
-        android:strokeColor="#333342"
-        android:strokeWidth="2.5"
-        android:pathData="M100,8 A92,92 0 1,1 99.99,8 Z" />
+        android:fillColor="#000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.0"
+        android:pathData="M100,10 A90,90 0 1,1 99.99,10 Z" />
 
-    <!-- Inner Track Ring -->
-    <path
-        android:strokeColor="#262634"
-        android:strokeWidth="1.2"
-        android:pathData="M100,16 A84,84 0 1,1 99.99,16 Z" />
-
-    <!-- 12, 3, 6, 9 Primary Hour Ticks (Rounded Pills) -->
+    <!-- 12, 3, 6, 9 Primary Hour Ticks (White) -->
     <!-- 12 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="4.0"
         android:strokeLineCap="round"
-        android:pathData="M100,16 L100,32" />
+        android:pathData="M100,14 L100,28" />
 
     <!-- 3 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="4.0"
         android:strokeLineCap="round"
-        android:pathData="M168,100 L184,100" />
+        android:pathData="M172,100 L186,100" />
 
     <!-- 6 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="4.0"
         android:strokeLineCap="round"
-        android:pathData="M100,168 L100,184" />
+        android:pathData="M100,172 L100,186" />
 
     <!-- 9 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4.5"
+        android:strokeWidth="4.0"
         android:strokeLineCap="round"
-        android:pathData="M16,100 L32,100" />
+        android:pathData="M14,100 L28,100" />
 
-    <!-- Intermediate Hour Dots (Radius 3.2 at R=76) -->
+    <!-- Intermediate Hour Dots (Icy Silver #BECAD8 at R=78) -->
     <!-- 1 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M138,31 A3.2,3.2 0 1,1 137.99,31 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M139,29.5 A3.0,3.0 0 1,1 138.99,29.5 Z" />
 
     <!-- 2 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M165.8,58.8 A3.2,3.2 0 1,1 165.79,58.8 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M167.5,58 A3.0,3.0 0 1,1 167.49,58 Z" />
 
     <!-- 4 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M165.8,134.8 A3.2,3.2 0 1,1 165.79,134.8 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M167.5,136 A3.0,3.0 0 1,1 167.49,136 Z" />
 
     <!-- 5 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M138,162.6 A3.2,3.2 0 1,1 137.99,162.6 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M139,164.5 A3.0,3.0 0 1,1 138.99,164.5 Z" />
 
     <!-- 7 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M62,162.6 A3.2,3.2 0 1,1 61.99,162.6 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M61,164.5 A3.0,3.0 0 1,1 60.99,164.5 Z" />
 
     <!-- 8 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M34.2,134.8 A3.2,3.2 0 1,1 34.19,134.8 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M32.5,136 A3.0,3.0 0 1,1 32.49,136 Z" />
 
     <!-- 10 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M34.2,58.8 A3.2,3.2 0 1,1 34.19,58.8 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M32.5,58 A3.0,3.0 0 1,1 32.49,58 Z" />
 
     <!-- 11 o'clock -->
     <path
-        android:fillColor="#9E9EB5"
-        android:pathData="M62,31 A3.2,3.2 0 1,1 61.99,31 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M61,29.5 A3.0,3.0 0 1,1 60.99,29.5 Z" />
 
-    <!-- Center Pivot Base -->
+    <!-- Center Pivot Rim -->
     <path
-        android:fillColor="#14141A"
-        android:strokeColor="#333342"
-        android:strokeWidth="1.5"
-        android:pathData="M100,92.5 A7.5,7.5 0 1,1 99.99,92.5 Z" />
+        android:fillColor="#BECAD8"
+        android:pathData="M100,93 A7.0,7.0 0 1,1 99.99,93 Z" />
 
 </vector>
