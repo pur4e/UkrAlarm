@@ -356,7 +356,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Blue Check Alert Button -->
+        <!-- Purple Check Alert Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCheckAlert"
             android:layout_width="match_parent"

@@ -11,7 +11,7 @@
 
     <!-- iOS 26 Glassmorphic Black Theme -->
     <style name="Theme.UkrAlarm.Black" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/ios_blue_dark</item>
+        <item name="colorPrimary">@color/ios_purple_dark</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#FFFFFF</item>
         <item name="android:statusBarColor">@color/black_bg</item>
@@ -28,7 +28,7 @@
 
     <!-- iOS 26 Clean White Theme -->
     <style name="Theme.UkrAlarm.White" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/ios_blue</item>
+        <item name="colorPrimary">@color/ios_purple</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#000000</item>
         <item name="android:statusBarColor">@color/white_bg</item>

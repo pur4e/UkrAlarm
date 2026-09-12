@@ -156,7 +156,7 @@ object GlassDatePickerBottomSheet {
                     }
                     item.isToday -> {
                         textDay.setBackgroundResource(R.drawable.bg_calendar_day_today)
-                        textDay.setTextColor(textDay.context.getColor(R.color.ios_blue))
+                        textDay.setTextColor(textDay.context.getColor(R.color.ios_purple_dark))
                     }
                     else -> {
                         textDay.background = null

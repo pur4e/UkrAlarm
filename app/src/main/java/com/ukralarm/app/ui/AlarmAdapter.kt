@@ -106,7 +106,7 @@ class AlarmAdapter(
                 // Subtle border glow when selected
                 if (isSelected) {
                     cardAlarm.strokeWidth = dpToPx(2)
-                    cardAlarm.strokeColor = ContextCompat.getColor(context, R.color.ios_blue)
+                    cardAlarm.strokeColor = ContextCompat.getColor(context, R.color.ios_purple_dark)
                 } else {
                     cardAlarm.strokeWidth = dpToPx(1)
                     val typedValue = TypedValue()
