@@ -4,117 +4,63 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Outer Minimalist Dial Ring -->
+    <!-- Minimalist Dial Ring (Compact & Centered) -->
     <path
         android:strokeColor="#FFFFFF"
         android:strokeWidth="1.8"
-        android:pathData="M54,21 A33,33 0 1,1 53.99,21 Z" />
+        android:pathData="M 54,34 A 20,20 0 1,1 53.99,34 Z" />
 
-    <!-- 12, 3, 6, 9 Cardinal Hour Markers (Crisp Pure White) -->
+    <!-- 12, 3, 6, 9 Cardinal Ticks -->
     <!-- 12 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="1.8"
         android:strokeLineCap="round"
-        android:pathData="M54,23 L54,28.5" />
+        android:pathData="M 54,36 L 54,38.5" />
 
     <!-- 3 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="1.8"
         android:strokeLineCap="round"
-        android:pathData="M79.5,54 L85,54" />
+        android:pathData="M 69.5,54 L 72,54" />
 
     <!-- 6 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="1.8"
         android:strokeLineCap="round"
-        android:pathData="M54,79.5 L54,85" />
+        android:pathData="M 54,69.5 L 54,72" />
 
     <!-- 9 o'clock -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.4"
+        android:strokeWidth="1.8"
         android:strokeLineCap="round"
-        android:pathData="M23,54 L28.5,54" />
+        android:pathData="M 36,54 L 38.5,54" />
 
-    <!-- Intermediate Hour Dots (Icy Silver-Gray #BECAD8 at R=29.5) -->
-    <!-- 1 o'clock -->
+    <!-- Hour Hand (Rounded Pill, ~10:10) -->
     <path
-        android:fillColor="#BECAD8"
-        android:pathData="M68.75,27.25 A1.25,1.25 0 1,1 68.74,27.25 Z" />
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.8"
+        android:strokeLineCap="round"
+        android:pathData="M 54,54 L 45.4,48.0" />
 
-    <!-- 2 o'clock -->
+    <!-- Minute Hand (Rounded Pill, ~10:10) -->
     <path
-        android:fillColor="#BECAD8"
-        android:pathData="M79.55,38.05 A1.25,1.25 0 1,1 79.54,38.05 Z" />
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:pathData="M 54,54 L 66.3,46.3" />
 
-    <!-- 4 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M79.55,67.55 A1.25,1.25 0 1,1 79.54,67.55 Z" />
-
-    <!-- 5 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M68.75,78.35 A1.25,1.25 0 1,1 68.74,78.35 Z" />
-
-    <!-- 7 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M39.25,78.35 A1.25,1.25 0 1,1 39.24,78.35 Z" />
-
-    <!-- 8 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M28.45,67.55 A1.25,1.25 0 1,1 28.44,67.55 Z" />
-
-    <!-- 10 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M28.45,38.05 A1.25,1.25 0 1,1 28.44,38.05 Z" />
-
-    <!-- 11 o'clock -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M39.25,27.25 A1.25,1.25 0 1,1 39.24,27.25 Z" />
-
-    <!-- HOUR HAND (Faceted 3D Dauphine Hand, 10:10 angle) -->
-    <!-- Lit Facet (Pure White) -->
+    <!-- Center Pivot Ring (White) -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M56.0,55.4 L52.6,56.0 L38.4,43.1 L54.0,54.0 Z" />
-
-    <!-- Shadow Facet (Cool Slate Silver #7D8A9E) -->
-    <path
-        android:fillColor="#7D8A9E"
-        android:pathData="M56.0,55.4 L54.0,54.0 L38.4,43.1 L55.4,52.0 Z" />
-
-    <!-- MINUTE HAND (Faceted 3D Dauphine Hand, 10:10 angle) -->
-    <!-- Lit Facet (Pure White) -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M52.0,55.4 L52.8,52.4 L76.1,38.5 L54.0,54.0 Z" />
-
-    <!-- Shadow Facet (Cool Slate Silver #7D8A9E) -->
-    <path
-        android:fillColor="#7D8A9E"
-        android:pathData="M52.0,55.4 L54.0,54.0 L76.1,38.5 L55.2,55.6 Z" />
-
-    <!-- Center Pivot Bevel Ring -->
-    <path
-        android:fillColor="#BECAD8"
-        android:pathData="M54,50.5 A3.5,3.5 0 1,1 53.99,50.5 Z" />
+        android:pathData="M 54,51.6 A 2.4,2.4 0 1,1 53.99,51.6 Z" />
 
     <!-- Center Pivot Core (Pure Black Depth) -->
     <path
         android:fillColor="#000000"
-        android:pathData="M54,52.0 A2.0,2.0 0 1,1 53.99,52.0 Z" />
-
-    <!-- Center Pivot Pin Dot (Pure White) -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M54,53.2 A0.8,0.8 0 1,1 53.99,53.2 Z" />
+        android:pathData="M 54,53.1 A 0.9,0.9 0 1,1 53.99,53.1 Z" />
 
 </vector>
