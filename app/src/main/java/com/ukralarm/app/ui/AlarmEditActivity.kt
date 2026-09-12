@@ -55,6 +55,13 @@ class AlarmEditActivity : BaseActivity() {
         db = AlarmDatabase(this)
         alarmId = intent.getLongExtra("ALARM_ID", 0)
 
+        val textEditTitle = findViewById<TextView>(R.id.textEditTitle)
+        if (alarmId > 0) {
+            textEditTitle.setText(R.string.edit_alarm)
+        } else {
+            textEditTitle.setText(R.string.new_alarm)
+        }
+
         timePicker = findViewById(R.id.timePicker)
         textDaysSummary = findViewById(R.id.textDaysSummary)
         textRingtoneName = findViewById(R.id.textRingtoneName)

@@ -25,6 +25,7 @@
             android:paddingHorizontal="4dp" />
 
         <TextView
+            android:id="@+id/textEditTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
@@ -111,7 +112,7 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:padding="7dp"
-                            android:background="@drawable/bg_day_toggle"
+                            android:background="@drawable/bg_circle_button"
                             android:src="@drawable/ic_calendar"
                             app:tint="?android:attr/textColorPrimary" />
                     </LinearLayout>

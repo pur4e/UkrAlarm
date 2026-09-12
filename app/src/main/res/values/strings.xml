@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Pure Clock</string>
+    <string name="main_title">Будильник</string>
+    <string name="section_appearance_language">ОФОРМЛЕННЯ ТА МОВА</string>
+    <string name="section_region_alert">РЕГІОН ТА ПОВІТРЯНА ТРИВОГА</string>
     <string name="add_alarm">Додати будильник</string>
     <string name="no_alarms">Немає будильників\nНатисніть + щоб додати</string>
     <string name="select_time">Виберіть час</string>
