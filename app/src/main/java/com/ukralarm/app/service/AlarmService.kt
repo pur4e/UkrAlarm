@@ -66,7 +66,7 @@ class AlarmService : Service() {
         when (action) {
             "CHECK_AND_RING" -> {
                 originalTriggerTime = System.currentTimeMillis()
-                startForeground(1, createMonitoringNotification(getString(R.string.app_name)))
+                startForegroundCompat(1, createMonitoringNotification(getString(R.string.app_name)))
                 checkAlertStatus()
             }
             "DISMISS" -> stopAlarm()
@@ -162,7 +162,13 @@ class AlarmService : Service() {
                 }
             }
 
-            vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as? android.os.VibratorManager
+                vibratorManager?.defaultVibrator
+            } else {
+                @Suppress("DEPRECATION")
+                getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+            }
             if (isVibEnabled && vibrator?.hasVibrator() == true) {
                 val timings = when (vibPattern) {
                     "heartbeat" -> longArrayOf(0, 200, 100, 200, 500)
@@ -190,7 +196,7 @@ class AlarmService : Service() {
             startActivity(fullScreenIntent)
 
             // Update to ringing notification
-            startForeground(1, createRingingNotification())
+            startForegroundCompat(1, createRingingNotification())
 
             // Start Auto-snooze timer (1 minute auto-snooze or similar, standard is 1 min ring before auto snooze, let's use 60000)
             autoSnoozeRunnable = Runnable { snoozeAlarm() }
@@ -225,7 +231,12 @@ class AlarmService : Service() {
         }
         
         sendBroadcast(Intent(ACTION_CLOSE_RING_ACTIVITY))
-        stopForeground(true)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } else {
+            @Suppress("DEPRECATION")
+            stopForeground(true)
+        }
         stopSelf()
     }
 
@@ -241,7 +252,12 @@ class AlarmService : Service() {
         autoSnoozeRunnable?.let { handler.removeCallbacks(it) }
         
         sendBroadcast(Intent(ACTION_CLOSE_RING_ACTIVITY))
-        stopForeground(true)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } else {
+            @Suppress("DEPRECATION")
+            stopForeground(true)
+        }
 
         if (alarmId > 0) {
             val db = AlarmDatabase(this)
@@ -309,16 +325,32 @@ class AlarmService : Service() {
             .build()
     }
 
+    private fun startForegroundCompat(notificationId: Int, notification: Notification) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(
+                notificationId,
+                notification,
+                android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK
+            )
+        } else {
+            startForeground(notificationId, notification)
+        }
+    }
+
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "ALARM_CHANNEL",
-                "Alarm Monitoring",
+                "Pure Clock Alarms",
                 NotificationManager.IMPORTANCE_HIGH
-            )
-            channel.setBypassDnd(true)
+            ).apply {
+                description = "Pure Clock Alarm Alerts"
+                setBypassDnd(true)
+                enableVibration(true)
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            }
             val manager = getSystemService(NotificationManager::class.java)
-            manager.createNotificationChannel(channel)
+            manager?.createNotificationChannel(channel)
         }
     }
 
