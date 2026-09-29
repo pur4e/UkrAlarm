@@ -7,12 +7,15 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.os.PowerManager
 import android.os.Vibrator
 import android.os.VibrationEffect
 import android.util.Log
@@ -29,7 +32,7 @@ class AlarmService : Service() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
-    private var isLooping = false
+    private var wakeLock: PowerManager.WakeLock? = null
     private var isAlertNotificationShown = false
     private val handler = Handler(Looper.getMainLooper())
     private var checkRunnable: Runnable? = null
@@ -40,10 +43,10 @@ class AlarmService : Service() {
     
     private val MAX_WAIT_TIME_MS = 3 * 60 * 60 * 1000L
     private val CHECK_INTERVAL_MS = 30 * 1000L
-    private val AUTO_SNOOZE_MS = 60 * 1000L // 1 minute auto snooze
 
     companion object {
         const val ACTION_CLOSE_RING_ACTIVITY = "com.ukralarm.app.ACTION_CLOSE_RING"
+        private const val TAG = "AlarmService"
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -53,15 +56,32 @@ class AlarmService : Service() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
+        acquireWakeLock()
     }
 
     private var currentSnoozeCount = 0
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val action = intent?.action
-        alarmId = intent?.getLongExtra("ALARM_ID", 0) ?: alarmId
+        val intentAlarmId = intent?.getLongExtra("ALARM_ID", -1) ?: -1
+        if (intentAlarmId > 0) {
+            alarmId = intentAlarmId
+        }
         alarmLabel = intent?.getStringExtra("ALARM_LABEL") ?: alarmLabel
         currentSnoozeCount = intent?.getIntExtra("SNOOZE_COUNT", 0) ?: 0
+
+        // Load label from DB if not provided in intent
+        if (alarmLabel.isEmpty() && alarmId > 0) {
+            try {
+                val db = AlarmDatabase(this)
+                val alarm = db.getAlarm(alarmId)
+                alarmLabel = alarm?.label ?: ""
+            } catch (e: Exception) {
+                Log.w(TAG, "Could not load alarm label", e)
+            }
+        }
+
+        Log.d(TAG, "onStartCommand: action=$action, alarmId=$alarmId, snoozeCount=$currentSnoozeCount")
 
         when (action) {
             "CHECK_AND_RING" -> {
@@ -74,6 +94,31 @@ class AlarmService : Service() {
         }
 
         return START_NOT_STICKY
+    }
+
+    private fun acquireWakeLock() {
+        try {
+            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+            wakeLock = powerManager.newWakeLock(
+                PowerManager.PARTIAL_WAKE_LOCK,
+                "PureClock:AlarmServiceWakeLock"
+            ).apply {
+                acquire(MAX_WAIT_TIME_MS + 60_000L) // max postpone + 1 min buffer
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Could not acquire wake lock", e)
+        }
+    }
+
+    private fun releaseWakeLock() {
+        try {
+            wakeLock?.let {
+                if (it.isHeld) it.release()
+            }
+            wakeLock = null
+        } catch (e: Exception) {
+            Log.w(TAG, "Error releasing wake lock", e)
+        }
     }
 
     private fun checkAlertStatus() {
@@ -94,8 +139,10 @@ class AlarmService : Service() {
                     if (isAlert) {
                         val timeWaiting = System.currentTimeMillis() - originalTriggerTime
                         if (timeWaiting > MAX_WAIT_TIME_MS) {
+                            Log.d(TAG, "Max postpone time reached, ringing anyway")
                             ringAlarm()
                         } else {
+                            Log.d(TAG, "Alert active, postponing alarm")
                             if (!isAlertNotificationShown) {
                                 val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                                 notificationManager.notify(1, createMonitoringNotification(getString(R.string.postponed_by_alert)))
@@ -106,10 +153,12 @@ class AlarmService : Service() {
                             handler.postDelayed(checkRunnable!!, CHECK_INTERVAL_MS)
                         }
                     } else {
+                        Log.d(TAG, "No alert active, ringing alarm")
                         ringAlarm()
                     }
                 }
             } catch (e: Exception) {
+                Log.w(TAG, "Error checking alert status, ringing anyway", e)
                 handler.post { ringAlarm() }
             }
         }.start()
@@ -117,40 +166,46 @@ class AlarmService : Service() {
 
     private fun ringAlarm() {
         checkRunnable?.let { handler.removeCallbacks(it) }
+        Log.d(TAG, "ringAlarm() called for alarmId=$alarmId")
 
         try {
-            var alarmUri: android.net.Uri? = null
+            var alarmUri: Uri? = null
             
             // Try to get custom ringtone from DB
             if (alarmId > 0) {
                 val db = AlarmDatabase(this)
                 val alarm = db.getAlarm(alarmId)
                 if (alarm != null && alarm.ringtoneUri.isNotEmpty()) {
-                    alarmUri = android.net.Uri.parse(alarm.ringtoneUri)
+                    alarmUri = Uri.parse(alarm.ringtoneUri)
                 }
             }
 
-            // Fallback to default
+            // Fallback to default alarm sound
             if (alarmUri == null) {
                 alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-                if (alarmUri == null) {
-                    alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-                }
             }
+            // Fallback to notification sound if no alarm sound available
+            if (alarmUri == null) {
+                alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            }
+
+            val audioAttributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
 
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(this@AlarmService, alarmUri!!)
-                setAudioAttributes(
-                    android.media.AudioAttributes.Builder()
-                        .setUsage(android.media.AudioAttributes.USAGE_ALARM)
-                        .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build()
-                )
-                isLooping = true
+                setAudioAttributes(audioAttributes)
+                // IMPORTANT: Must use the MediaPlayer's setLooping method explicitly,
+                // not the Kotlin property syntax inside apply{} which would shadow with outer class fields
+                setLooping(true)
                 prepare()
                 start()
             }
+            Log.d(TAG, "MediaPlayer started, looping=${mediaPlayer?.isLooping}")
 
+            // Load vibration settings
             var isVibEnabled = true
             var vibPattern = "basic"
             if (alarmId > 0) {
@@ -180,14 +235,10 @@ class AlarmService : Service() {
                     "ticktock" -> intArrayOf(0, 150, 0, 255, 0)
                     else -> intArrayOf(0, 255, 0)
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    vibrator?.vibrate(VibrationEffect.createWaveform(timings, amplitudes, 0))
-                } else {
-                    @Suppress("DEPRECATION")
-                    vibrator?.vibrate(timings, 0)
-                }
+                vibrator?.vibrate(VibrationEffect.createWaveform(timings, amplitudes, 0))
             }
 
+            // Launch full-screen alarm activity
             val fullScreenIntent = Intent(this, AlarmRingActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 putExtra("ALARM_ID", alarmId)
@@ -195,21 +246,26 @@ class AlarmService : Service() {
             }
             startActivity(fullScreenIntent)
 
-            // Update to ringing notification
+            // Update to ringing notification with full-screen intent
             startForegroundCompat(1, createRingingNotification())
 
-            // Start Auto-snooze timer (1 minute auto-snooze or similar, standard is 1 min ring before auto snooze, let's use 60000)
-            autoSnoozeRunnable = Runnable { snoozeAlarm() }
-            handler.postDelayed(autoSnoozeRunnable!!, 60000L)
+            // Auto-snooze after 60 seconds if user doesn't interact
+            autoSnoozeRunnable = Runnable { 
+                Log.d(TAG, "Auto-snooze triggered")
+                snoozeAlarm() 
+            }
+            handler.postDelayed(autoSnoozeRunnable!!, 60_000L)
 
         } catch (e: Exception) {
-            Log.e("AlarmService", "Error ringing alarm", e)
+            Log.e(TAG, "Error ringing alarm", e)
         }
     }
 
     private fun stopAlarm() {
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
+        Log.d(TAG, "stopAlarm() called")
+        
+        try { mediaPlayer?.stop() } catch (e: Exception) { /* ignore */ }
+        try { mediaPlayer?.release() } catch (e: Exception) { /* ignore */ }
         mediaPlayer = null
         
         vibrator?.cancel()
@@ -237,14 +293,17 @@ class AlarmService : Service() {
             @Suppress("DEPRECATION")
             stopForeground(true)
         }
+        releaseWakeLock()
         stopSelf()
     }
 
 
     private fun snoozeAlarm() {
+        Log.d(TAG, "snoozeAlarm() called, snoozeCount=$currentSnoozeCount")
+        
         // Stop current ringing
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
+        try { mediaPlayer?.stop() } catch (e: Exception) { /* ignore */ }
+        try { mediaPlayer?.release() } catch (e: Exception) { /* ignore */ }
         mediaPlayer = null
         vibrator?.cancel()
         
@@ -275,6 +334,7 @@ class AlarmService : Service() {
                 }
             }
         }
+        releaseWakeLock()
         stopSelf()
     }
 
@@ -285,7 +345,7 @@ class AlarmService : Service() {
         return NotificationCompat.Builder(this, "ALARM_CHANNEL")
             .setContentTitle(getString(R.string.app_name))
             .setContentText(text)
-            .setSmallIcon(R.drawable.ic_settings)
+            .setSmallIcon(R.drawable.ic_alarm_notification)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
@@ -307,6 +367,7 @@ class AlarmService : Service() {
         val snoozeIntent = Intent(this, AlarmService::class.java).apply { 
             action = "SNOOZE" 
             putExtra("ALARM_ID", alarmId)
+            putExtra("SNOOZE_COUNT", currentSnoozeCount)
         }
         val snoozePendingIntent = PendingIntent.getService(this, 2, snoozeIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
@@ -315,13 +376,14 @@ class AlarmService : Service() {
         return NotificationCompat.Builder(this, "ALARM_CHANNEL")
             .setContentTitle(title)
             .setContentText(getString(R.string.app_name))
-            .setSmallIcon(R.drawable.ic_settings)
+            .setSmallIcon(R.drawable.ic_alarm_notification)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .setFullScreenIntent(fullScreenPendingIntent, true)
             .addAction(0, getString(R.string.dismiss), dismissPendingIntent)
             .addAction(0, getString(R.string.snooze), snoozePendingIntent)
             .setOngoing(true)
+            .setAutoCancel(false)
             .build()
     }
 
@@ -338,29 +400,29 @@ class AlarmService : Service() {
     }
 
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                "ALARM_CHANNEL",
-                "Pure Clock Alarms",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "Pure Clock Alarm Alerts"
-                setBypassDnd(true)
-                enableVibration(true)
-                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            }
-            val manager = getSystemService(NotificationManager::class.java)
-            manager?.createNotificationChannel(channel)
+        val channel = NotificationChannel(
+            "ALARM_CHANNEL",
+            "Pure Clock Alarms",
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            description = "Pure Clock Alarm Alerts"
+            setBypassDnd(true)
+            enableVibration(true)
+            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            setSound(null, null) // Sound is managed by MediaPlayer, not notification
         }
+        val manager = getSystemService(NotificationManager::class.java)
+        manager?.createNotificationChannel(channel)
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer?.release()
+        try { mediaPlayer?.release() } catch (e: Exception) { /* ignore */ }
         vibrator?.cancel()
         checkRunnable?.let { handler.removeCallbacks(it) }
         autoSnoozeRunnable?.let { handler.removeCallbacks(it) }
+        releaseWakeLock()
     }
 }

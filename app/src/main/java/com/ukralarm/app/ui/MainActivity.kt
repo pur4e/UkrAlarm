@@ -1,11 +1,15 @@
 package com.ukralarm.app.ui
 
 import android.Manifest
+import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -47,6 +51,12 @@ class MainActivity : BaseActivity() {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
             }
         }
+
+        // Request battery optimization exemption for reliable alarm delivery
+        requestBatteryOptimizationExemption()
+        
+        // Check exact alarm scheduling permission on Android 12+
+        checkExactAlarmPermission()
 
         val prefs = getSharedPreferences("settings", Context.MODE_PRIVATE)
         currentTheme = prefs.getString("theme", "black") ?: "black"
@@ -212,5 +222,36 @@ class MainActivity : BaseActivity() {
             emptyText.visibility = View.GONE
         }
         com.ukralarm.app.widget.ClockWidgetProvider.updateAllWidgets(this)
+    }
+
+    private fun requestBatteryOptimizationExemption() {
+        try {
+            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+            if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
+                @Suppress("BatteryLife")
+                val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
+                    data = Uri.parse("package:$packageName")
+                }
+                startActivity(intent)
+            }
+        } catch (e: Exception) {
+            // Some ROMs don't support this intent
+        }
+    }
+
+    private fun checkExactAlarmPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            if (!alarmManager.canScheduleExactAlarms()) {
+                try {
+                    val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                        data = Uri.parse("package:$packageName")
+                    }
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    // Fallback - some devices don't have this settings page
+                }
+            }
+        }
     }
 }
